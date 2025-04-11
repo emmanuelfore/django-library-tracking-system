@@ -9,8 +9,8 @@ app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
 app.conf.beat_schedule = {
-    'check_overdue_loans ': {
-        'task': 'library.tasks.check_overdue_loans ',
+    'send-overdue-notifications': {
+        'task': 'library.tasks.send_overdue_notification',
         'schedule': crontab(hour=0, minute=0),  # Daily at 0:00
     }
 }
